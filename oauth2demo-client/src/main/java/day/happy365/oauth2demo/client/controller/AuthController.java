@@ -44,7 +44,6 @@ public class AuthController {
 
         URL = "http://localhost:8000/auth-server/userInfo?accessToken=" + accessToken;
         Map map = restTemplate.getForObject(URL, Map.class);
-        map.forEach((k, v) -> System.out.println(k + " = " + v));
         assert map != null;
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("username", map.get("username"));
