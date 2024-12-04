@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登陆</title>
+    <link th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.css}" rel="stylesheet">
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.js}"></script>
+</head>
+<body>
+<div style="width: 350px; margin: 50px 50px">
+    <form>
+        <div class="mb-3">
+            <label for="username" class="form-label">用户名</label>
+            <input type="text" class="form-control" id="username" value="xinxiaoyan">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">密码</label>
+            <input type="text" class="form-control" id="password" value="123456">
+        </div>
+        <div class="btn btn-primary" onclick="login()">授权登陆</div>
+    </form>
+    <div>
+        <input id="response_type" th:value="${response_type}" hidden="hidden">
+        <input id="client_id" th:value="${client_id}" hidden="hidden">
+        <input id="redirect_uri" th:value="${redirect_uri}" hidden="hidden">
+        <input id="scope" th:value="${scope}" hidden="hidden">
+        <input id="state" th:value="${state}" hidden="hidden">
+    </div>
+</div>
+<script>
+    function login() {
+        let username = $("#username").val();
+        let password = $("#password").val();
+        let response_type = $("#response_type").val();
+        let client_id = $("#client_id").val();
+        let redirect_uri = $("#redirect_uri").val();
+        let scope = $("#scope").val();
+        let state = $("#state").val();
+        window.location.href = "http://localhost:8000/auth-server/login?username=" + username +
+            "&password=" + password + "&response_type=" + response_type + "&client_id=" + client_id +
+            "&redirect_uri=" + redirect_uri + "&scope=" + scope + "&state=" + state;
+    }
+</script>
+</body>
+</html>

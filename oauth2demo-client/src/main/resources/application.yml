@@ -1,0 +1,11 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: oauth2demo-client
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
