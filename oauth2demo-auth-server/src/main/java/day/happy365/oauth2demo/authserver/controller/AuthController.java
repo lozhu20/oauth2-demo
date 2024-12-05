@@ -75,12 +75,12 @@ public class AuthController {
             return map;
         }
 
-        CACHE_MAP.remove(code);
-
         String token = UUID.randomUUID().toString();
         String refreshToken = UUID.randomUUID().toString();
 
         TOKEN_MAP.put(token, CACHE_MAP.get(code));
+
+        CACHE_MAP.remove(code);
 
         map.put("access_token", token);
         map.put("token_type", "bearer");
